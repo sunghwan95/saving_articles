@@ -1,0 +1,9 @@
+.wrapper {
+  width: 1000px;
+  margin: 5px auto;
+}
+#url-box {
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
