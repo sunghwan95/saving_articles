@@ -12,11 +12,12 @@ const openClose = function () {
 };
 
 const posting = function () {
-  const articleURL = $("#posting-url").val();
+  let articleURL = $("#posting-url").val();
+  let comment = $("#posting-comment").val();
   $.ajax({
     type: "POST",
     url: "/post",
-    data: { give_url: articleURL },
+    data: { give_url: articleURL, give_comment: comment },
     success: function (response) {
       if (response["result"] == "success") {
         alert("포스팅 성공");
@@ -38,14 +39,15 @@ const showArticles = function () {
           articles[i]["title"],
           articles[i]["image"],
           articles[i]["url"],
-          articles[i]["desc"]
+          articles[i]["desc"],
+          articles[i]["comment"]
         );
       }
     },
   });
 };
 
-const makeCard = function (title, img, url, desc) {
+const makeCard = function (title, img, url, desc, comment) {
   const templateHtml = `<div class="col mb-4">
                             <div class="card h-100">
                                 <img src="${img}" class="card-img-top" alt="image-cap" />
@@ -54,6 +56,9 @@ const makeCard = function (title, img, url, desc) {
                                     <p class="card-text">
                                     ${desc}
                                     </p>
+                                </div>
+                                <div class="card-footer">
+                                    <p>${comment}</p>
                                 </div>
                             </div>
                         </div>`;

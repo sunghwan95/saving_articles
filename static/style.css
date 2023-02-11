@@ -7,3 +7,6 @@
   border-radius: 10px;
   padding: 20px;
 }
+.jumbotron img {
+  object-fit: cover;
+}

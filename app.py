@@ -15,6 +15,7 @@ def home():
 @app.route("/post", methods=["POST"])
 def post_article():
     receive_url = request.form["give_url"]
+    receive_comment = request.form["give_comment"]
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
@@ -30,7 +31,8 @@ def post_article():
         "title": og_title,
         "image": og_image,
         "url": og_url,
-        "desc": og_desc
+        "desc": og_desc,
+        "comment": receive_comment
     }
 
     db.articles.insert_one(doc)
